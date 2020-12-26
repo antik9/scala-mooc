@@ -26,7 +26,7 @@ object task_seq_riddle {
           case _                                     => (1, next) :: acc
         }
       }
-      .flatMap({ case (a, b) => List(a, b) })
+      .flatMap { case (a, b) => List(a, b) }
 
   /**
    * 2. Реализуйте ленивый список, который генерирует данную последовательность
