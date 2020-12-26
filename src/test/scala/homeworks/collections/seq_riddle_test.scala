@@ -15,4 +15,7 @@ class seq_riddle_test extends AnyFlatSpec {
     assert(task_seq_riddle.funSeq(5) === List(3, 1, 2, 2, 1, 1))
   }
 
+  "funSeq" should "access values lazily" in {
+    assert(task_seq_riddle.funSeq.take(100000000)(5) === List(3, 1, 2, 2, 1, 1))
+  }
 }

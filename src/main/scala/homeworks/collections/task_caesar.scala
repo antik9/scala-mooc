@@ -17,15 +17,19 @@ object task_caesar {
    * @param offset сдвиг вперёд по алфавиту
    * @return зашифрованное слово
    */
-  def encrypt(word: String, offset: Int): String =
-    task"Реализуйте метод `encrypt`"()
+  def encrypt(word: String, offset: Int): String = makeShift(word, offset % 26)
 
   /**
    * @param cipher шифр, который необходимо расшифровать
    * @param offset сдвиг вперёд по алфавиту
    * @return расшифрованное слово
    */
-  def decrypt(cipher: String, offset: Int): String =
-    task"Реализуйте метод `decrypt`"()
+  def decrypt(cipher: String, offset: Int): String = makeShift(cipher, 26 - offset % 26)
 
+  def makeShift(cipher: String, offset: Int): String =
+    cipher
+      .map(_ + offset)
+      .map(ch => if (ch > 'Z') ch - 26 else ch)
+      .map(_.toChar)
+      .mkString
 }
